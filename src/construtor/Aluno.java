@@ -12,7 +12,7 @@ public class Aluno {
 
     // construtor
     public Aluno(String nome, int idade) {
-        Aluno novoAluno = new Aluno("teste de instanciaão", 50)
+        Aluno novoAluno = new Aluno("teste de instancição", 50)
         aleatorio = new Random();
         this.nome = nome;
         this.idade = idade;
