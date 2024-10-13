@@ -1,4 +1,5 @@
 import java.util.Calendar;
+package herança;
 
 public class Aluno extends Pessoa {
     // atributos
@@ -6,6 +7,6 @@ public class Aluno extends Pessoa {
 
     // metodos
     public Aluno(String nome, Calendar data_nascimento, long CPF, Endereco endereco) {
-        super(nome, data_nascimento, CPF, endereco)
+        super(nome, data_nascimento, CPF, endereco);
     }
 }
