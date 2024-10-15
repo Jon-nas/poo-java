@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class Aluno {
     // atributos
@@ -20,18 +21,18 @@ public class Aluno {
 }
 
 class Escola {
-    // atributos
+    // Atributos
     private String nome, CNPJ;
     private Endereco endereco;
     private List departamentos;
     private List discentes;
 
-    // métodos
+    // Metodos
     public Escola(String nome, String CNPJ) {
         this.nome = nome;
         this.CNPJ = CNPJ;
-        this.departamentos = new ArrayList<Departamento>();
-        this.discentes = new ArrayList<Aluno>();
+        this.departamentos = new ArrayList<>();
+        this.discentes = new ArrayList<>();
     }
 
     public void criarDepartamento(String nomeDepartamento) {
@@ -42,23 +43,19 @@ class Escola {
         departamentos.remove(departamento);
     }
 
-    public void matricularAluno(Aluno novoAluno) {
+    public void matricularAluno(Aluno novoAluno)[
         discentes.add(novoAluno);
-    }
+    ]
 
     public void trancarMatriculaAluno(Aluno aluno) {
         discentes.remove(aluno);
     }
 
     public void agruparAlunos() {
-        Map<String, List<Aluno>> agrupamento = new HashMap<>();
-        for (Aluno a : discentes) {
-            if (!agrupamento.containsKey(a.recuperarNaturalidade())) {
-                agrupamento.put(a.recuperarNaturalidade(), new ArrayList<>());
-            }
-            agrupamento.get(a.recuperarNaturalidade()).add(a);
-        }
-        System.out.println("Resultado do agrupamento por naturalidade: " + agrupamento);
+        Map<String, List<Aluno>> agrupamento = 
+        discentes.stream().collect(Collectors.groupingBy(Aluno::recuperarNaturalidade));
+        System.out.println("Resultado do agrupamento por naturalidade: ");
+        agrupamento.forEach((String chave, List<Aluno> lista) -> System.out.println(chave + " = " + lista));
     }
 }
 
