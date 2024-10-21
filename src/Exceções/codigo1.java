@@ -1,5 +1,3 @@
-package Exceções;
-
 public class codigo1 {
     try {
         //bloco de código monitorado
